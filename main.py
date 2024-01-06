@@ -27,18 +27,18 @@ def get_birthdays_per_week(users):
         # Перевіряємо, чи день народження потрапляє у вікно наступного тижня і не впадає на вихідні
         if today <= birthday <= next_week:
             # 0-4 відповідають пн-пт (робочі дні)
-            day_name = weekdays[birthday.weekday()] 
+            day_name = weekdays[birthday.weekday()]
             if day_name in ["Saturday", "Sunday"]:
-                day_name = "Monday" # Отримуємо назву дня тижня для дня народження
-            birthday_week[day_name].append(user["name"])  # Додаємо ім'я користувача до списку імен відповідного дня тижня
+                day_name = "Monday"  # Отримуємо назву дня тижня для дня народження
+            birthday_week[day_name].append(
+                user["name"])  # Додаємо ім'я користувача до списку імен відповідного дня тижня
 
     return {day: names for day, names in birthday_week.items() if names}
-    
 
 
 if __name__ == "__main__":
     users = [
-        {"name": "Jan Koum", "birthday": datetime(1976, 1, 1).date()},
+        {"name": "John Doe", "birthday": datetime(1976, 1, 1).date()},
     ]
 
     result = get_birthdays_per_week(users)
